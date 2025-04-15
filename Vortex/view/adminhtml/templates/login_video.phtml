@@ -1,0 +1,45 @@
+<video autoplay muted loop playsinline class="admin-login-bg-video"
+       poster="<?= $block->getViewFileUrl('Chill_Vortex::images/bg-fallback.jpg') ?>">
+    <source src="<?= $block->getViewFileUrl('Chill_Vortex::video/bg.mp4') ?>" type="video/mp4">
+</video>
+
+<style>
+.admin-login-bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+    background-color: #000;
+}
+body.admin-login-with-video {
+    visibility: hidden;
+}
+body.admin-login-with-video.video-ready {
+    visibility: visible;
+}
+label.admin__field-label {
+    color: #fff;
+}
+.page-layout-admin-login .admin__legend {
+    color: #eb5202;
+    font-weight: 400;
+}
+.adminhtml-auth-login .form-actions .links a {
+    color: #FFF;
+}
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var video = document.querySelector('.admin-login-bg-video');
+        if (video) {
+            video.addEventListener('loadeddata', function () {
+                document.body.classList.add('video-ready');
+            });
+        }
+    });
+</script>
